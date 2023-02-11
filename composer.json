@@ -48,7 +48,9 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
-        "artisan": "docker-compose exec php php /var/www/html/artisan"
+        "artisan": [
+            "docker-compose exec php php /var/www/html/artisan"
+        ]
     },
     "extra": {
         "laravel": {
