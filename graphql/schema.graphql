@@ -38,4 +38,30 @@ type User {
 
     "When the account was last updated."
     updated_at: DateTime!
+
+    "Tickets a user has."
+    tickets: [Ticket!]! @hasMany
+}
+
+type Ticket {
+  "Unique primary key."
+  id: ID!
+
+  "Unique primary key."
+  user: User! @belongsTo
+
+  "Unique primary key."
+  status: String!
+
+  "When the ticket was created."
+  created_at: DateTime!
+
+  "When the ticket was last updated."
+  updated_at: DateTime!
+}
+
+type Mutation {
+  createTicket(user_id: Int!, status: String!): Ticket @create
+  updateTicket(id: ID!, user_id: Int!, status: String!): Ticket @update
+  deleteTicket(id: ID!): Ticket @delete
 }
